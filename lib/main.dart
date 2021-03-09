@@ -56,7 +56,20 @@ class _MyHomePageState extends State<MyHomePage> {
 
   _initListPopularCities() {
     listPopularCities.clear();
-    listPopularCities.add(PopularCitie(citie: "New York", local: "United States", textoExplicativo: "luxemburgo", urlImage: "https://images.unsplash.com/photo-1596494197990-5ff2bc6251a6?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"));
+    listPopularCities.add(
+      PopularCitie(
+        citie: "New York", 
+        local: "United States", 
+        textoExplicativo: "luxemburgo", 
+        urlImage: "https://images.unsplash.com/photo-1596494197990-5ff2bc6251a6?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80",
+        quantity: "1.5K",
+        friends: [
+          PopularCitieFriends(urlImage: "https://randomuser.me/api/portraits/women/88.jpg"),
+          PopularCitieFriends(urlImage: "https://randomuser.me/api/portraits/women/41.jpg"),
+          PopularCitieFriends(urlImage: "https://randomuser.me/api/portraits/men/24.jpg"),
+        ]
+      )
+    );
     listPopularCities.add(PopularCitie(citie: "Prince Edward", local: "Hong Kong", textoExplicativo: "luxemburgo", urlImage: "https://images.unsplash.com/photo-1573529034968-658d31ceab2d?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=700&q=80"));
     listPopularCities.add(PopularCitie(citie: "Paris", local: "France", textoExplicativo: "luxemburgo", urlImage: "https://images.unsplash.com/photo-1532701908539-968e2a55245e?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"));
   }
@@ -202,6 +215,67 @@ class _MyHomePageState extends State<MyHomePage> {
                               height: 260,
                               width: 160,
                               margin: EdgeInsets.only(right: 16, left: index == 0 ? 16 : 0),
+                              padding: EdgeInsets.all(8),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                children: [
+                                  Row(
+                                    children: [
+                                      Container(
+                                        width: 160 - 80 - 16.0,
+                                        height: 24,
+                                        child: Stack(
+                                          children: item.friends == null ? [] 
+                                            : List.generate(item.friends.length, (index) => 
+                                              Container(
+                                                width: 24,
+                                                height: 24,
+                                                margin: EdgeInsets.only(left: index * 16.0),
+                                                decoration: BoxDecoration(
+                                                  color: Colors.orange,
+                                                  borderRadius: BorderRadius.circular(18),
+                                                  border: Border.all(
+                                                    color: Colors.white,
+                                                    width: 1.4
+                                                  ),
+                                                  image: DecorationImage(
+                                                    image: NetworkImage(item.friends[index].urlImage ?? "")
+                                                  )
+                                                ),
+                                                // child: Text(index.toString()),
+                                              )
+                                            ) 
+                                        ),
+                                      ),
+                                      Container(
+                                        width: 80,
+                                        child: Column(
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              item.quantity ?? "0.0",
+                                              style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 12,
+                                                fontWeight: FontWeight.w600
+                                              ),
+                                            ),
+                                            Text(
+                                              "Active Friends",
+                                              style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 12,
+                                                fontWeight: FontWeight.w600
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ],
+                                  )
+                                ],
+                              ),
                             ),
                             Container(
                               padding: EdgeInsets.only(left: 16, top: 16),
