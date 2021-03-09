@@ -372,7 +372,56 @@ class _MyHomePageState extends State<MyHomePage> {
                         );
                     }),
                   ),
-                )
+                ),
+
+
+                Container(
+                  padding: EdgeInsets.all(16),
+                  child: 
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          "Travel with Friends",
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black54
+                          ),
+                        ),
+                        Text(
+                          "View All",
+                          style: TextStyle(
+                            color: Colors.grey[400]
+                          ),
+                        ),
+                      ],
+                    )
+                ),
+
+                Container(
+                  width: MediaQuery.of(context).size.width,
+                  height: 64,
+                  child: ListView(
+                    scrollDirection: Axis.horizontal,
+                    children: List.generate(8, (index) {
+                      return
+                        Container(
+                          width: 64,
+                          height: 64,
+                          margin: EdgeInsets.only(left: index == 0 ? 16: 0, right: 16),
+                          decoration: BoxDecoration(
+                            color: Colors.grey[200],
+                            borderRadius: BorderRadius.circular(64),
+                            image: DecorationImage(
+                              fit: BoxFit.fill,
+                              image: NetworkImage("https://randomuser.me/api/portraits/women/$index.jpg")
+                            )
+                          ),
+                        );
+                    }),
+                  ),
+                ),
                 
               ],
             ),
