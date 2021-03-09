@@ -304,9 +304,75 @@ class _MyHomePageState extends State<MyHomePage> {
                         );
                     })
                   ),
+                ),
+
+                Container(
+                  padding: EdgeInsets.all(16),
+                  child: 
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          "Trending Places",
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black54
+                          ),
+                        ),
+                        Text(
+                          "View All",
+                          style: TextStyle(
+                            color: Colors.grey[400]
+                          ),
+                        ),
+                      ],
+                    )
+                ),
+
+                Container(
+                  width: MediaQuery.of(context).size.width,
+                  height: 80,
+                  child: ListView(
+                    scrollDirection: Axis.horizontal,
+                    children: List.generate(4, (index) {
+                      // var item = list[index];
+
+                      var image = "";
+
+                      switch (index) {
+                        case 0:
+                          image = "https://images.unsplash.com/photo-1603647778476-0be85c875d37?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80";
+                          break;
+                        case 1:
+                          image = "https://images.unsplash.com/photo-1568568740443-f846637a598f?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=601&q=80";
+                          break;
+                        case 2:
+                          image = "https://images.unsplash.com/photo-1557790790-f21da6560754?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=633&q=80";
+                          break;
+                        case 3:
+                          image = "https://images.unsplash.com/photo-1514189069169-f31100881e49?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=701&q=80";
+                          break;
+                        default:
+                      }
+
+                      return
+                        Container(
+                          width: 120,
+                          height: 80,
+                          margin: EdgeInsets.only(left: index == 0 ? 16: 0, right: 16),
+                          decoration: BoxDecoration(
+                            color: Colors.grey[200],
+                            borderRadius: BorderRadius.circular(8),
+                            image: DecorationImage(
+                              fit: BoxFit.fill,
+                              image: NetworkImage(image)
+                            )
+                          ),
+                        );
+                    }),
+                  ),
                 )
-
-
                 
               ],
             ),
